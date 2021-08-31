@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ScreenplayService } from 'src/app/core/services/screenplay.service';
+import { Pagination } from 'src/app/shared/models/pagination.model';
+import { Screenplay } from 'src/app/shared/models/screenplay.model';
+import { ScreenplayParams } from 'src/app/shared/models/screenplayParams.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  screenplays: Screenplay[];
+  pagination : Pagination;
+  screenplayParams : ScreenplayParams;
 
-  ngOnInit(): void {
+  constructor(private screenplayService : ScreenplayService) {
+    this.screenplayParams = this.screenplayService.getScreenplayParams();
   }
 
+  ngOnInit(): void {
+    this.loadScreenplays();
+  }
+
+  loadScreenplays() {
+    this.screenplayService.setScreenplayParams(this.screenplayParams);
+    this.screenplayService.getScreenplays(this.screenplayParams).subscribe( res => {
+      this.screenplays = res.result;
+      this.pagination = res.pagination;
+    })
+  }
+
+  loadMore() {
+    this.screenplayParams.pageNumber = ++this.screenplayParams.pageNumber;
+    this.screenplayService.setScreenplayParams(this.screenplayParams);
+    this.loadScreenplays();
+  }
 }

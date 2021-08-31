@@ -1,1 +1,48 @@
-<p>home works!</p>
+<div class="row">
+    <div class="col">
+        <div class="btn-group">
+            <button 
+                type="button"
+                class="btn btn-secondary" 
+                name='orderBy'
+                btnRadio='movie'
+                (click)="loadScreenplays()"
+                [(ngModel)]="screenplayParams.category">Movies</button>
+    
+            <button 
+                type="button"
+                class="btn btn-secondary" 
+                name='orderBy' 
+                btnRadio='show'
+                (click)="loadScreenplays()"
+                [(ngModel)]="screenplayParams.category">Tv Shows</button>
+        </div>
+    </div>
+
+    <div class="col">
+        <form class="form-inline my-2 my-lg-0 float-right">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+</div>
+
+<div class="mt-4">
+    <div class="row">
+        <ng-container  *ngFor="let screenplay of screenplays">
+            <div class="col col-sm-3 mb-4" [routerLink]="['/screenplay', screenplay.id]" style="cursor:pointer;">
+                <div class="card">
+                    <img class="card-img-top" src="../../../assets/images/Image404.jpeg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{screenplay.title}}</h5>
+                        <p class="card-text"> {{screenplay.description | slice:1:100}}</p>
+                        <span class="badge badge-warning p-2">{{screenplay.category}}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="col-12 text-center" *ngIf="pagination?.totalPages > pagination?.currentPage">
+            <button class="btn alert-primary" (click)="loadMore()">Load More</button>
+        </div>
+    </div>
+</div>

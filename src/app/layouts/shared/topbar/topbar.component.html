@@ -1,1 +1,16 @@
-<p>topbar works!</p>
+<nav class="navbar navbar-light bg-light border-bottom">
+    <div class="container">
+        <a class="navbar-brand" routerLink='/'>Screenplay App</a>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink='/' routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink='/rate' routerLinkActive="active">Rate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary" routerLink='/auth' routerLinkActive="active">Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
