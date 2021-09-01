@@ -7,4 +7,5 @@ export interface Screenplay {
     releaseDate: Date;
     category: string;
     actors: Actor[];
+    averageRate: number;
 }

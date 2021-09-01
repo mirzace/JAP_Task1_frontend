@@ -66,4 +66,18 @@ export class ScreenplayService {
         return response.data;
       }));
   }
+
+  rateScreenplay(id: number, rate: number) {
+    const rating = {
+      "rate": rate,
+      "screenplayId": id
+    }
+    this.http.post(this.baseUrl + 'ratings', rating).subscribe( (res: any) => {
+      //Update local array
+      const screenplay = [...this.screenplaysCache.values()]
+      .reduce( (arr, elem) => arr.concat(elem.result), [] )
+      .find((screenplay : Screenplay) => screenplay.id === id);
+      screenplay.averageRate = res.data.averageRate;
+    });
+  }
 }

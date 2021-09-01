@@ -1,1 +1,21 @@
-<p>rate works!</p>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Average Rate</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let screenplay of screenplays">
+        <td>{{screenplay?.title}}</td>
+        <td>{{screenplay?.averageRate |  number : '1.2-2'}}</td>
+        <td>
+            <td><app-star-rating [screenplayId]="this.screenplay?.id" ></app-star-rating></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="col-12 text-center" *ngIf="pagination?.totalPages > pagination?.currentPage">
+    <button class="btn alert-primary" (click)="loadMore()">Load More</button>
+</div>

@@ -34,7 +34,8 @@
                     <img class="card-img-top" src="../../../assets/images/Image404.jpeg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{screenplay.title}}</h5>
-                        <p class="card-text"> {{screenplay.description | slice:1:100}}</p>
+                        <p class="card-subtitle mb-2">({{screenplay?.averageRate | number : '1.2-2'}} stars)</p>
+                        <p class="card-text"> {{screenplay.description | slice:0:100}}</p>
                         <span class="badge badge-warning p-2">{{screenplay.category}}</span>
                     </div>
                 </div>
