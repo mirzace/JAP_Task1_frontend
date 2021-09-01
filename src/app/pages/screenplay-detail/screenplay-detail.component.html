@@ -1,1 +1,19 @@
-<p>screenplay-detail works!</p>
+<div class="card mb-4">
+    <div class="card-body p-0">
+        <div class="row g-0">
+            <div class="col-lg-6 align-self-stretch bg-img-cover d-none d-lg-flex" style="background-image: url('../../../assets/images/Image404.jpeg'); background-position: center;"></div>
+            <div class="col-lg-6 p-5">
+                <span class="badge badge-secondary bg-primary-soft rounded-pill text-light mb-3">{{screenplay?.category}}</span>
+                <h1>{{screenplay?.title}}</h1>
+                <p class="text-muted">{{screenplay?.description}}</p>
+                <h6>Casting</h6>
+                <ng-container *ngFor="let actor of screenplay?.actors">
+                    <span class="text-muted mr-2">{{actor?.firstName}} {{actor?.lastName}}, </span>
+                </ng-container>
+                <div>
+                    <a class="btn btn-warning mt-4" routerLink="/rate">Rate It</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -52,17 +52,18 @@ export class ScreenplayService {
       }));
   }
 
-  getScreenplay(username: string) {
-    /*
-    const member = [...this.memberCache.values()]
+  getScreenplay(id: number) {
+    const screenplay = [...this.screenplaysCache.values()]
       .reduce( (arr, elem) => arr.concat(elem.result), [] )
-      .find((member : Member) => member.userName === username);
+      .find((screenplay : Screenplay) => screenplay.id === id);
 
-    if(member) {
-      return of(member);
+    if(screenplay) {
+      return of(screenplay);
     }
 
-    return this.http.get<Member>(this.baseUrl + 'users/' + username);
-    */
+    return this.http.get<Screenplay>(this.baseUrl + 'screenplays/' + id)
+      .pipe( map((response: any) => {
+        return response.data;
+      }));
   }
 }
