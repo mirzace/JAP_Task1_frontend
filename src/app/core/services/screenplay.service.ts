@@ -60,7 +60,6 @@ export class ScreenplayService {
     if(screenplay) {
       return of(screenplay);
     }
-
     return this.http.get<Screenplay>(this.baseUrl + 'screenplays/' + id)
       .pipe( map((response: any) => {
         return response.data;

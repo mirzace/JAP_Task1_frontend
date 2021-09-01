@@ -11,6 +11,7 @@ import { RateComponent } from './rate/rate.component';
 import { ScreenplayDetailComponent } from './screenplay-detail/screenplay-detail.component';
 import { StarRatingComponent } from './rate/star-rating/star-rating.component';
 import { StarComponent } from './rate/star-rating/star/star.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { StarComponent } from './rate/star-rating/star/star.component';
     CommonModule,
     PagesRoutingModule,
     FormsModule,
+    SharedModule,
     RatingModule.forRoot(),
     ButtonsModule.forRoot(),
   ]
