@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="screenplay">
     <div class="col-md-4 col-sm-12">
         <img class="w-100 h-100" *ngIf="this.screenplay?.photoUrl" [src]="this.screenplay?.photoUrl" [alt]="this.screenplay?.title">
         <img class="w-100 h-100" *ngIf="!this.screenplay?.photoUrl" src="../../../assets/images/Image404.jpeg" alt="Card image cap">

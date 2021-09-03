@@ -19,6 +19,7 @@ export class AuthService {
   register(model:any) {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
       map((res:any) => {
+        console.log(res);
         if(res.data) {
           this.setCurrentUser(res.data);
         }
@@ -28,8 +29,9 @@ export class AuthService {
 
   login(model:any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
-      map((response: any) => {
-        const user : User = response.data;
+      map((res: any) => {
+        console.log(res);
+        const user : User = res.data;
         if(user) {
           this.setCurrentUser(user);
         }

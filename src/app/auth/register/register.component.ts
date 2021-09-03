@@ -2,6 +2,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   validationErrors: string[] = [];
 
   constructor(
-    //private accountService : AccountService,
+    private authService: AuthService,
     private formBuilder : FormBuilder,
     private router: Router) { }
 
@@ -44,6 +45,12 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.router.navigateByUrl('/auth/login');
+    this.authService.register(this.registerForm.value).subscribe( (res:any) => {
+      if(res.data) {
+        this.router.navigateByUrl('/auth/login');
+      }
+    }, err => {
+      this.validationErrors = err;
+    })
   }
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   validationErrors: string[] = [];
 
   constructor(
-    //private accountService : AccountService,
+    private authService: AuthService,
     private formBuilder : FormBuilder,
     private router: Router) { }
 
@@ -39,6 +40,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.router.navigateByUrl('/');
+    this.authService.login(this.loginForm.value).subscribe( res => {
+      this.router.navigateByUrl('/');
+    }, err => {
+      this.validationErrors = err;
+    })
   }
 }

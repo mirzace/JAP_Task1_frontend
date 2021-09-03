@@ -12,6 +12,8 @@ import { ScreenplayDetailComponent } from './screenplay-detail/screenplay-detail
 import { StarRatingComponent } from './rate/star-rating/star-rating.component';
 import { StarComponent } from './rate/star-rating/star/star.component';
 import { SharedModule } from '../shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { SharedModule } from '../shared/shared.module';
     ScreenplayDetailComponent,
     StarRatingComponent,
     StarComponent,
+    NotFoundComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

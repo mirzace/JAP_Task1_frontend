@@ -4,6 +4,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { TopbarComponent } from './shared/topbar/topbar.component';
 import { HorizontalComponent } from './horizontal/horizontal.component';
 import { RouterModule } from '@angular/router';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    BsDropdownModule.forRoot(),
   ],
   exports: [
     HorizontalComponent

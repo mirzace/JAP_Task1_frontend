@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HorizontalComponent } from './layouts/horizontal/horizontal.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HorizontalComponent, loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)},
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
+  { path: '', component: HorizontalComponent, loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)},
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

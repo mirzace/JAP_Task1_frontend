@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
     if(searchTerm.length >= 2) {
       this.screenplays = [];
       this.screenplayParams.search = searchTerm;
+      this.screenplayParams.pageNumber = 1;
       this.screenplayService.getScreenplays(this.screenplayParams);
       this.loadScreenplays();
     }

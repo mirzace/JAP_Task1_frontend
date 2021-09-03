@@ -8,9 +8,18 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink='/rate' routerLinkActive="active">Rate</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="(authService.currentUser$ | async) === null" >
                 <a class="nav-link btn btn-primary" routerLink='/auth/login' routerLinkActive="active">Login</a>
             </li>
+
+            <ul class="dropdown mt-2" *ngIf="(authService.currentUser$ | async) as user" dropdown>
+                <a class="dropdown-toggle mt-5" dropdownToggle>Welcome {{ user?.userName | titlecase}}</a>
+                <div class="dropdown-menu mt-1" *dropdownMenu>
+                    <a class="dropdown-item" routerLink="/profile">Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </ul>
         </ul>
     </div>
 </nav>

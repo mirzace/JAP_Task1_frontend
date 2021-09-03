@@ -7,11 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,
