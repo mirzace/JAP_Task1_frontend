@@ -13,6 +13,14 @@
                     <button [disabled]="!loginForm.valid" class="btn btn-success btn-block" type="submit">Login</button>
                 </div>
             </form>
+
+            <ng-container *ngIf="validationErrors.length > 0">
+                <div *ngFor="let error of validationErrors">
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <strong>{{error}}</strong>
+                    </div>
+                </div>
+            </ng-container>
         </div>
         
         <div class="card-footer">

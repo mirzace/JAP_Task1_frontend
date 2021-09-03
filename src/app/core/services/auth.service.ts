@@ -23,6 +23,7 @@ export class AuthService {
         if(res.data) {
           this.setCurrentUser(res.data);
         }
+        return res;
       })
     )
   }
@@ -30,11 +31,11 @@ export class AuthService {
   login(model:any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
       map((res: any) => {
-        console.log(res);
         const user : User = res.data;
         if(user) {
           this.setCurrentUser(user);
         }
+        return res;
       })
     );
   }

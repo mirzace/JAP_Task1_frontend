@@ -40,10 +40,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.loginForm.value).subscribe( res => {
-      this.router.navigateByUrl('/');
+    this.authService.login(this.loginForm.value).subscribe( (res:any) => {
+        this.router.navigateByUrl('/');
     }, err => {
-      this.validationErrors = err;
+      this.validationErrors = [];
+      this.validationErrors.push(err.error.message);
     })
   }
 }

@@ -18,15 +18,15 @@
                 <div class="form-group text-center">
                     <button [disabled]="!registerForm.valid" class="btn btn-success btn-block" type="submit">Register</button>
                 </div>
-            
-                <div class="row" *ngIf="validationErrors.length > 0">
-                    <ul class="text-danger">
-                        <li *ngFor="let error of validationErrors">
-                            {{error}}
-                        </li>
-                    </ul>
-                </div>
             </form>
+            
+            <ng-container *ngIf="validationErrors.length > 0">
+                <div *ngFor="let error of validationErrors">
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <strong>{{error}}</strong>
+                    </div>
+                </div>
+            </ng-container>
         </div>
         
         <div class="card-footer">

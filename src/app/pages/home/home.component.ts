@@ -16,9 +16,8 @@ export class HomeComponent implements OnInit {
   screenplayParams : ScreenplayParams;
 
   constructor(private screenplayService : ScreenplayService) {
-    this.screenplayParams = this.screenplayService.getScreenplayParams();
-    this.screenplayParams.search = "";
-    this.screenplayParams.pageNumber = 1;
+    this.screenplayParams = this.screenplayService.resetScreenplayParams();
+
   }
 
   ngOnInit(): void {
