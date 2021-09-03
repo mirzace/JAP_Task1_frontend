@@ -29,6 +29,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     RatingModule.forRoot(),
     ButtonsModule.forRoot(),
+    
   ]
 })
 export class PagesModule { }

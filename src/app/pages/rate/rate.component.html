@@ -3,6 +3,7 @@
       <tr>
         <th scope="col">Title</th>
         <th scope="col">Average Rate</th>
+        <th scope="col">Category</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -10,8 +11,8 @@
       <tr *ngFor="let screenplay of screenplays">
         <td>{{screenplay?.title}}</td>
         <td>{{screenplay?.averageRate |  number : '1.2-2'}}</td>
-        <td>
-            <td><app-star-rating [screenplayId]="this.screenplay?.id" ></app-star-rating></td>
+        <td>{{screenplay?.category}}</td>
+        <td><app-star-rating [screenplayId]="this.screenplay?.id" ></app-star-rating></td>
       </tr>
     </tbody>
   </table>

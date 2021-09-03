@@ -15,7 +15,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   onSearchChange(value: string) {
-    if(value.length == 0 || value.length >2)
+    if(value.length == 0 || value.length >1)
       this.newSearchEvent.emit(value);
   }
 }

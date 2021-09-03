@@ -11,7 +11,7 @@ import { ScreenplayParams } from 'src/app/shared/models/screenplayParams.model';
 })
 export class RateComponent implements OnInit {
 
-  screenplays: Screenplay[];
+  screenplays: Screenplay[] = [];
   pagination : Pagination;
   screenplayParams : ScreenplayParams;
 
@@ -22,7 +22,7 @@ export class RateComponent implements OnInit {
   overStar: number | undefined;
 
   constructor(private screenplayService : ScreenplayService) {
-    this.screenplayParams = this.screenplayService.getScreenplayParams();
+    this.screenplayParams = this.screenplayService.resetScreenplayParams();
   }
 
   ngOnInit(): void {
@@ -32,9 +32,8 @@ export class RateComponent implements OnInit {
   loadScreenplays() {
     this.screenplayService.setScreenplayParams(this.screenplayParams);
     this.screenplayService.getScreenplays(this.screenplayParams).subscribe( res => {
-      this.screenplays = res.result;
+      this.screenplays = this.screenplays.concat(res.result);
       this.pagination = res.pagination;
-      console.log(this.screenplays)
     })
   }
 

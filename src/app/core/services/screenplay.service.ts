@@ -35,13 +35,14 @@ export class ScreenplayService {
 
   getScreenplays(screenplayParams: ScreenplayParams) {
     let response = this.screenplaysCache.get(Object.values(screenplayParams).join('-'));
+
     if(response) {
       return of(response);
     }
 
     let params = getPaginationHeaders(screenplayParams.pageNumber, screenplayParams.pageSize);
 
-    params = params.append('search', screenplayParams.search.toString());
+    params = params.append('search', screenplayParams.search.toString() || "");
     params = params.append('category', screenplayParams.category.toString());
     params = params.append('orderBy', screenplayParams.orderBy.toString());
 
