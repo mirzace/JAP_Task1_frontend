@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,15 +9,21 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
 
+  private subjectKeyUp = new Subject<any>();
+
   @Output() newSearchEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
+    // Wait for 1s after the user stops typing
+    this.subjectKeyUp.pipe((debounceTime(1000))).subscribe(value => {
+      if(value.length == 0 || value.length >1)
+        this.newSearchEvent.emit(value);
+    })
   }
 
   onSearchChange(value: string) {
-    if(value.length == 0 || value.length >1)
-      this.newSearchEvent.emit(value);
+    this.subjectKeyUp.next(value);
   }
 }

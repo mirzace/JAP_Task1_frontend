@@ -8,4 +8,5 @@ export interface Screenplay {
     category: string;
     actors: Actor[];
     averageRate: number;
+    photoUrl: string;
 }

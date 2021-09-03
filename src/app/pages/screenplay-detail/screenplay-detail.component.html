@@ -1,17 +1,16 @@
-<div class="card mb-4">
-    <div class="card-body p-0">
-        <div class="row g-0">
-            <div class="col-lg-6 align-self-stretch bg-img-cover d-none d-lg-flex" style="background-image: url('../../../assets/images/Image404.jpeg'); background-position: center;"></div>
-            <div class="col-lg-6 p-5">
-                <h1>{{screenplay?.title}}</h1>
-                <p class="card-subtitle mb-3">({{screenplay?.averageRate | number : '1.2-2'}} stars)</p>
-                <p class="text-muted">{{screenplay?.description}}</p>
-                <span class="badge badge-warning p-2 mb-3">{{screenplay.category}}</span>
-                <h6>Casting</h6>
-                <ng-container *ngFor="let actor of screenplay?.actors">
-                    <span class="text-muted mr-2">{{actor?.firstName}} {{actor?.lastName}}, </span>
-                </ng-container>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-md-4 col-sm-12">
+        <img class="w-100 h-100" *ngIf="this.screenplay?.photoUrl" [src]="this.screenplay?.photoUrl" [alt]="this.screenplay?.title">
+        <img class="w-100 h-100" *ngIf="!this.screenplay?.photoUrl" src="../../../assets/images/Image404.jpeg" alt="Card image cap">
+    </div>
+    <div class="col-md-8 col-sm-12 p-md-5">
+        <h1>{{screenplay?.title}}</h1>
+        <p class="card-subtitle mb-3">({{screenplay?.averageRate | number : '1.2-2'}} stars)</p>
+        <p class="text-muted">{{screenplay?.description}}</p>
+        <span class="badge badge-warning p-2 mb-3">{{screenplay.category}}</span>
+        <h6>Casting</h6>
+        <ng-container *ngFor="let actor of screenplay?.actors">
+            <span class="text-muted mr-2">{{actor?.firstName}} {{actor?.lastName}}, </span>
+        </ng-container>
     </div>
 </div>

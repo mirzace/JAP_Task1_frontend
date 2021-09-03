@@ -9,8 +9,8 @@
                 <app-input [formControl]='$any(loginForm).controls["password"]' 
                     [label]='"Password"' [type]='"password"'></app-input>
                 
-                <div class="form-group text-center">
-                    <button [disabled]="!loginForm.valid" class="btn btn-success" type="submit">Login</button>
+                <div class="form-group text-left">
+                    <button [disabled]="!loginForm.valid" class="btn btn-success btn-block" type="submit">Login</button>
                 </div>
             </form>
         </div>
@@ -21,4 +21,5 @@
             </div>
         </div>
     </div>
+    <a class="mt-4" routerLink="/">Back to home</a>
 </div>
