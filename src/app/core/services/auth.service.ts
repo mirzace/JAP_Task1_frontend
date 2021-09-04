@@ -14,7 +14,7 @@ export class AuthService {
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   register(model:any) {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
@@ -52,5 +52,9 @@ export class AuthService {
 
   getDecodedToken(token) {
     return JSON.parse(atob(token.split('.')[1]));
+  }
+
+  getProtectedResource() {
+    return this.http.get(this.baseUrl + 'account/protected-resource');
   }
 }

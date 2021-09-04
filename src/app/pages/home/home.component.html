@@ -28,7 +28,7 @@
     <div class="row">
         <ng-container *ngFor="let screenplay of screenplays">
             <div class="col col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-3" [routerLink]="['/screenplay', screenplay.id]" style="cursor:pointer;">
-                <div class="card">
+                <div class="card h-100">
                     <img class="card-img-top" *ngIf="this.screenplay?.photoUrl" [src]="this.screenplay?.photoUrl" [alt]="this.screenplay?.title">
                     <img class="card-img-top" *ngIf="!this.screenplay?.photoUrl" src="../../../assets/images/Image404.jpeg" alt="Card image cap">
                     <div class="card-body">
